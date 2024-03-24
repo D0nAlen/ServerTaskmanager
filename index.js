@@ -75,9 +75,9 @@ const generateTasks = (count) => {
 };
 
 app.get(`/`, (req, res) => {
-    res.send(generateTasks(7));
+    // res.send(generateTasks(7));
 
-    // res.send({ message: `Hello Alen!` });
+    res.send({ "message": "Hello Alen!" });
 });
 
 app.listen(3333, () => {
