@@ -1,4 +1,5 @@
 const express = require(`express`);
+const cors = require(`cors`);
 const app = express();
 
 const COLOR = {
@@ -74,10 +75,12 @@ const generateTasks = (count) => {
   return new Array(count).fill(``).map(generateTask);
 };
 
+app.use(cors());
+
 app.get(`/`, (req, res) => {
     // res.send(generateTasks(7));
 
-    res.send({ "message": "Hello Alen!" });
+  res.send({ "message": "Hello Alen!" });
 });
 
 app.listen(3333, () => {
