@@ -61,13 +61,13 @@ const generateTask = () => {
   const dueDate = Math.random() > 0.5 ? null : getRandomDate();
 
   return {
-    id: String(new Date() + Math.random()),
-    description: getRandomArrayItem(DescriptionItems),
+    "id": String(new Date() + Math.random()),
+    "description": getRandomArrayItem(DescriptionItems),
     dueDate,
-    repeatingDays: dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
-    color: getRandomArrayItem(COLOR),
-    isArchive: Math.random() > 0.5,
-    isFavourite: Math.random() > 0.5,
+    "repeatingDays": dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
+    "color": COLOR.YELLOW,//getRandomArrayItem(COLOR),
+    "isArchive": Math.random() > 0.5,
+    "isFavourite": Math.random() > 0.5,
   };
 };
 
@@ -77,10 +77,9 @@ const generateTasks = (count) => {
 
 app.use(cors());
 
-app.get(`/`, (req, res) => {
+// app.get(`/`, (req, res) => {
+app.get(`/tasks`, (req, res) => {
   res.send(generateTasks(7));
-  // res.send(generateTask());
-
   // res.send({ "message": "Hello Alen!" });
 });
 
