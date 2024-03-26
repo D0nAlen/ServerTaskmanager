@@ -59,15 +59,16 @@ const generateTask = () => {
     //     age: 27,
     // }
   const dueDate = Math.random() > 0.5 ? null : getRandomDate();
-
+// console.log(dueDate);
   return {
     "id": String(new Date() + Math.random()),
     "description": getRandomArrayItem(DescriptionItems),
-    dueDate,
-    "repeatingDays": dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
+    "dueDate": getRandomDate(),
+    "repeatingDays": generateRepeatingDays(),//dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
     "color": COLOR.YELLOW,//getRandomArrayItem(COLOR),
-    "isArchive": Math.random() > 0.5,
-    "isFavourite": Math.random() > 0.5,
+    "isArchive": true, //Math.random() > 0.5,
+    "isFavorite": Math.random() > 0.5,
+    // "isFavourite": Math.random() > 0.5,
   };
 };
 
