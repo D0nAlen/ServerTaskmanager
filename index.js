@@ -43,6 +43,7 @@ const getRandomDate = () => {
 
   targetDate.setDate(targetDate.getDate() + diffValue);
 
+  // console.log(targetDate);
   return targetDate;
 };
 
@@ -58,17 +59,15 @@ const generateTask = () => {
     //     name: "Igor",
     //     age: 27,
     // }
-  const dueDate = Math.random() > 0.5 ? null : getRandomDate();
-// console.log(dueDate);
+  const dueDate = getRandomDate(); //Math.random() > 0.5 ? null : getRandomDate();
   return {
-    "id": String(new Date() + Math.random()),
-    "description": getRandomArrayItem(DescriptionItems),
-    "dueDate": getRandomDate(),
-    "repeatingDays": generateRepeatingDays(),//dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
-    "color": COLOR.YELLOW,//getRandomArrayItem(COLOR),
-    "isArchive": true, //Math.random() > 0.5,
-    "isFavorite": Math.random() > 0.5,
-    // "isFavourite": Math.random() > 0.5,
+    id: String(new Date().getTime()+Math.random()),
+    description: getRandomArrayItem(DescriptionItems),
+    dueDate,
+    repeatingDays: dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
+    color: COLOR.GREEN,//getRandomIntegerNumber(1,5)],
+    isArchive: Math.random() > 0.5,
+    isFavorite: Math.random() > 0.5,
   };
 };
 
