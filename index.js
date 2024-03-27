@@ -45,7 +45,8 @@ const getRandomDate = () => {
 
   targetDate.setDate(targetDate.getDate() + diffValue);
 
-  return Date.parse(targetDate); //targetDate;
+  return Date.parse(targetDate);
+  // return Date.now();
 };
 
 const generateRepeatingDays = () => {
@@ -55,11 +56,6 @@ const generateRepeatingDays = () => {
 };
 
 const generateTask = () => {
-  // return {
-  //     id: 123,
-  //     name: "Igor",
-  //     age: 27,
-  // }
   const dueDate = getRandomDate(); //Math.random() > 0.5 ? null : getRandomDate();
   return {
     id: String(new Date().getTime() + Math.random()),
