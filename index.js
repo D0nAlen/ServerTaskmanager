@@ -3,12 +3,14 @@ const cors = require(`cors`);
 const app = express();
 
 const COLOR = {
-    BLACK: `black`,
-    YELLOW: `yellow`,
-    BLUE: `blue`,
-    GREEN: `green`,
-    PINK: `pink`,
-  };
+  BLACK: `black`,
+  YELLOW: `yellow`,
+  BLUE: `blue`,
+  GREEN: `green`,
+  PINK: `pink`,
+};
+
+const COLORS = Object.values(COLOR);
 
 const DescriptionItems = [
   `Изучить теорию`,
@@ -38,14 +40,12 @@ const getRandomIntegerNumber = (min, max) => {
 
 const getRandomDate = () => {
   const targetDate = new Date();
-  // const targetDate = Date.now();
   const sign = Math.random() > 0.5 ? 1 : -1;
   const diffValue = sign * getRandomIntegerNumber(0, 8);
 
   targetDate.setDate(targetDate.getDate() + diffValue);
 
-  // console.log(targetDate);
-  return targetDate;
+  return Date.parse(targetDate); //targetDate;
 };
 
 const generateRepeatingDays = () => {
@@ -55,18 +55,18 @@ const generateRepeatingDays = () => {
 };
 
 const generateTask = () => {
-    // return {
-    //     id: 123,
-    //     name: "Igor",
-    //     age: 27,
-    // }
+  // return {
+  //     id: 123,
+  //     name: "Igor",
+  //     age: 27,
+  // }
   const dueDate = getRandomDate(); //Math.random() > 0.5 ? null : getRandomDate();
   return {
-    id: String(new Date().getTime()+Math.random()),
+    id: String(new Date().getTime() + Math.random()),
     description: getRandomArrayItem(DescriptionItems),
     dueDate,
     repeatingDays: dueDate ? DefaultRepeatingDays : generateRepeatingDays(),
-    color: COLOR.GREEN,//getRandomIntegerNumber(1,5)],
+    color: getRandomArrayItem(COLORS),
     isArchive: Math.random() > 0.5,
     isFavorite: Math.random() > 0.5,
   };
@@ -85,5 +85,5 @@ app.get(`/tasks`, (req, res) => {
 });
 
 app.listen(3333, () => {
-    console.log('Server start working on port 3333!');
+  console.log('Server start working on port 3333!');
 });
