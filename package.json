@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.0.0-beta.2"
+    "cors": "2.8.5",
+    "express": "5.0.0-beta.2",
+    "moment": "2.29.4",
+    "moment-locales-webpack-plugin": "^1.2.0"
   }
 }

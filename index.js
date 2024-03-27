@@ -38,6 +38,7 @@ const getRandomIntegerNumber = (min, max) => {
 
 const getRandomDate = () => {
   const targetDate = new Date();
+  // const targetDate = Date.now();
   const sign = Math.random() > 0.5 ? 1 : -1;
   const diffValue = sign * getRandomIntegerNumber(0, 8);
 
