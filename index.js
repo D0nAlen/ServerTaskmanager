@@ -74,11 +74,16 @@ const generateTasks = (count) => {
 
 app.use(cors());
 
-// app.get(`/`, (req, res) => {
 app.get(`/tasks`, (req, res) => {
   res.send(generateTasks(7));
   // res.send({ "message": "Hello Alen!" });
 });
+
+app.get('/tasks/:id', (req, res) => {
+  // res.send('user ' + req.params.id)
+  res.send(req.params.id);
+
+})
 
 app.listen(3333, () => {
   console.log('Server start working on port 3333!');
