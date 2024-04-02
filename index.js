@@ -72,12 +72,23 @@ const generateTasks = (count) => {
   return new Array(count).fill(``).map(generateTask);
 };
 
+let allTasks = generateTasks(7);
 app.use(cors());
 
-// app.get(`/`, (req, res) => {
 app.get(`/tasks`, (req, res) => {
-  res.send(generateTasks(7));
+  res.send(allTasks);
   // res.send({ "message": "Hello Alen!" });
+});
+
+// createNewTask
+app.post('/tasks', function (req, res) {
+  res.send(allTasks);
+  // res.send('POST request to homepage')
+})
+
+// updateTask
+app.put('/tasks', function (req, res) {
+  res.send(allTasks);
 });
 
 app.listen(3333, () => {
