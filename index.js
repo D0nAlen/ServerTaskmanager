@@ -80,6 +80,17 @@ app.get(`/tasks`, (req, res) => {
   // res.send({ "message": "Hello Alen!" });
 });
 
+// createNewTask
+app.post('/tasks', function (req, res) {
+  res.send(allTasks);
+  // res.send('POST request to homepage')
+})
+
+// updateTask
+app.put('/tasks', function (req, res) {
+  res.send(allTasks);
+});
+
 app.listen(3333, () => {
   console.log('Server start working on port 3333!');
 });
