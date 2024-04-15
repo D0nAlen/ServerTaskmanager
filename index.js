@@ -72,23 +72,58 @@ const generateTasks = (count) => {
   return new Array(count).fill(``).map(generateTask);
 };
 
+const createNewTask = (newTask) => {
+  allTasks.push(newTask);
+  // console.log(allTasks);
+
+  // return allTasks;
+}
+
+const updateTask = (taskId, changedTask) => {
+  allTasks.map((obj) => {
+    if (obj.id === taskId) {
+      Object.assign(obj, changedTask);
+    }
+  });
+  // console.log(allTasks);
+
+
+  //const result = 
+  // allTasks.indexOf()
+  // const result = allTasks.filter(obj => obj.id === taskId);
+
+  // console.log(allTasks.indexOf(changedTask.id));
+  // console.log(allTasks);
+}
+
+
 let allTasks = generateTasks(7);
 app.use(cors());
+app.use(express.json());
 
 app.get(`/tasks`, (req, res) => {
   res.send(allTasks);
   // res.send({ "message": "Hello Alen!" });
 });
 
+// 1)данные приходят с клиента, но saving на кнопке не исчезает(виснет). Форма должна закрыться(как?)
 // createNewTask
 app.post('/tasks', function (req, res) {
-  res.send(allTasks);
-  // res.send('POST request to homepage')
+  // console.log(req.body);
+  createNewTask(req.body);
+
+  // res.send(allTasks);
 })
 
 // updateTask
-app.put('/tasks', function (req, res) {
-  res.send(allTasks);
+// 1)вписать id в мою функцию, и вернуть измененный массив
+app.put('/tasks/:id', function (req, res) {
+  // const changedTask = req.body;
+  // const taskId = req.params.id;
+  updateTask(req.params.id, req.body);
+  // console.log(allTasks);
+
+  // res.send(allTasks);
 });
 
 app.listen(3333, () => {
