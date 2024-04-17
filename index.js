@@ -86,14 +86,16 @@ const updateTask = (taskId, changedTask) => {
     }
   });
   // console.log(allTasks);
+}
 
+// осталось исправить:
+// 1)saving...deleting... - зависают
+// 3)не сохраняются значения флагов повторяющейся таски(repeating)
+// 4)обновление таски - должен возвращать обновленные данные
 
-  //const result = 
-  // allTasks.indexOf()
-  // const result = allTasks.filter(obj => obj.id === taskId);
-
-  // console.log(allTasks.indexOf(changedTask.id));
-  // console.log(allTasks);
+const deleteTask = (taskId) => {
+  const index = allTasks.findIndex(item => item.id === taskId);
+  allTasks.splice(index, 1);
 }
 
 
@@ -109,21 +111,22 @@ app.get(`/tasks`, (req, res) => {
 // 1)данные приходят с клиента, но saving на кнопке не исчезает(виснет). Форма должна закрыться(как?)
 // createNewTask
 app.post('/tasks', function (req, res) {
-  // console.log(req.body);
   createNewTask(req.body);
 
   // res.send(allTasks);
 })
 
 // updateTask
-// 1)вписать id в мою функцию, и вернуть измененный массив
 app.put('/tasks/:id', function (req, res) {
-  // const changedTask = req.body;
-  // const taskId = req.params.id;
   updateTask(req.params.id, req.body);
-  // console.log(allTasks);
-
   // res.send(allTasks);
+  // console.log(allTasks);
+});
+
+// deleteTask
+app.delete('/tasks/:id', function (req, res) {
+  deleteTask(req.params.id);
+  res.send(allTasks);
 });
 
 app.listen(3333, () => {
