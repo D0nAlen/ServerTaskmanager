@@ -108,19 +108,16 @@ app.get(`/tasks`, (req, res) => {
   // res.send({ "message": "Hello Alen!" });
 });
 
-// 1)данные приходят с клиента, но saving на кнопке не исчезает(виснет). Форма должна закрыться(как?)
 // createNewTask
 app.post('/tasks', function (req, res) {
   createNewTask(req.body);
-
-  // res.send(allTasks);
+  res.send(req.body);
 })
 
 // updateTask
 app.put('/tasks/:id', function (req, res) {
   updateTask(req.params.id, req.body);
-  // res.send(allTasks);
-  // console.log(allTasks);
+  res.send(req.body);
 });
 
 // deleteTask
