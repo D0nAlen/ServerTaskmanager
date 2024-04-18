@@ -89,10 +89,7 @@ const updateTask = (taskId, changedTask) => {
 }
 
 // осталось исправить:
-// 1)saving...deleting... - зависают
-// 3)не сохраняются значения флагов повторяющейся таски(repeating)
-// 4)обновление таски - должен возвращать обновленные данные
-
+// 1)не сохраняются значения флагов повторяющейся таски(repeating)
 const deleteTask = (taskId) => {
   const index = allTasks.findIndex(item => item.id === taskId);
   allTasks.splice(index, 1);
@@ -105,7 +102,6 @@ app.use(express.json());
 
 app.get(`/tasks`, (req, res) => {
   res.send(allTasks);
-  // res.send({ "message": "Hello Alen!" });
 });
 
 // createNewTask
