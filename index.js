@@ -74,9 +74,6 @@ const generateTasks = (count) => {
 
 const createNewTask = (newTask) => {
   allTasks.push(newTask);
-  // console.log(allTasks);
-
-  // return allTasks;
 }
 
 const updateTask = (taskId, changedTask) => {
@@ -88,8 +85,6 @@ const updateTask = (taskId, changedTask) => {
   // console.log(allTasks);
 }
 
-// осталось исправить:
-// 1)не сохраняются значения флагов повторяющейся таски(repeating)
 const deleteTask = (taskId) => {
   const index = allTasks.findIndex(item => item.id === taskId);
   allTasks.splice(index, 1);
